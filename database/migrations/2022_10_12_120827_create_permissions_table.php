@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('menu_id');
             $table->text('name');
             $table->timestamps();
-            //$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            // $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

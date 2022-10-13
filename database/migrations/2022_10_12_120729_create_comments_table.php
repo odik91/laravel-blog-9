@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('comment');
             $table->timestamps();
             //table relation with post table
-            //$table->foreign('posts_id')->references('id')->on('posts')->onDelete('cascade');
+            // $table->foreign('posts_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

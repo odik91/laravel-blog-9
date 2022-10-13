@@ -1,0 +1,5 @@
+alter table `comments` add constraint `comments_posts_id_foreign` foreign key (`posts_id`) references `posts` (`id`) on delete cascade;
+
+alter table `permissions` add constraint `permissions_role_id_foreign` foreign key (`role_id`) references `roles` (`id`) on delete cascade;
+
+

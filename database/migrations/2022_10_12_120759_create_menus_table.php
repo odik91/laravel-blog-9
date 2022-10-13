@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('menu');
+            $table->string('icon');
             $table->string('route')->default('none');
             $table->timestamps();
             $table->softDeletes();
