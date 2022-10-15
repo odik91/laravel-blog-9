@@ -39,5 +39,5 @@ Route::delete('trash/delete-submenu/{id}', [SubmenuController::class, 'delete'])
 // route admin category management
 Route::resource('category', CategoryController::class);
 Route::get('trash/category', [CategoryController::class, 'trash'])->name('category.trash');
-Route::get('trash/restore-category/{id}', [CategoryController::class,'restore'])->name('category.restore');
+Route::get('trash/restore-category/{id}', [CategoryController::class, 'restore'])->name('category.restore');
 Route::delete('trash/delete-category/{id}', [CategoryController::class, 'delete'])->name('category.delete');
