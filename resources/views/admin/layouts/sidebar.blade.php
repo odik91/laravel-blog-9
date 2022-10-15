@@ -62,7 +62,7 @@
         <li
           class="nav-item {{ (isset($title) && $title == 'Submenu List') || $title == 'Add Submenu' || $title == 'Trash Submenu' ? 'menu-is-opening menu-open' : '' }}">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-edit"></i>
+            <i class="nav-icon fa fa-list"></i>
             <p>
               Submenu Management
               <i class="fas fa-angle-left right"></i>
@@ -79,6 +79,29 @@
               <a href="{{ route('submenu.trash') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Trash Submenu</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-braille"></i>
+            <p>
+              Category Management
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('category.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Category List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('category.trash') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Trash Category</p>
               </a>
             </li>
           </ul>

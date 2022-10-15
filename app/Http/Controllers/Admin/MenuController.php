@@ -56,7 +56,7 @@ class MenuController extends Controller
         if ($insert) {
             Session::flash('success', "Menu $request->menu added successfully");
         } else {
-            Session::flash('error', "Menu $request->menu to add new menu");
+            Session::flash('error', "Menu $request->menu fail to add");
         }
 
         return redirect()->route('menu.create');
@@ -111,7 +111,7 @@ class MenuController extends Controller
         if ($update) {
             Session::flash('success', "Menu $request->menu edited successfully");
         } else {
-            Session::flash('error', "Menu $request->menu to has fail to update");
+            Session::flash('error', "Menu $request->menu fail to update");
         }
         return redirect()->route('menu.index');
     }

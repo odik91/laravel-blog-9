@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SubmenuController;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,9 @@ Route::resource('submenu', SubmenuController::class);
 Route::get('trash/submenu', [SubmenuController::class, 'trash'])->name('submenu.trash');
 Route::get('trash/restore-submenu/{id}', [SubmenuController::class, 'restore'])->name('submenu.restore');
 Route::delete('trash/delete-submenu/{id}', [SubmenuController::class, 'delete'])->name('submenu.delete');
+
+// route admin category management
+Route::resource('category', CategoryController::class);
+Route::get('trash/category', [CategoryController::class, 'trash'])->name('category.trash');
+Route::get('trash/restore-category/{id}', [CategoryController::class,'restore'])->name('category.restore');
+Route::delete('trash/delete-category/{id}', [CategoryController::class, 'delete'])->name('category.delete');
