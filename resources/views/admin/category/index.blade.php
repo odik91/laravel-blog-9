@@ -50,39 +50,39 @@
                       <td>{{ ucfirst($category['name']) }}</td>
                       <td>{{ $category['slug'] }}</td>
                       <td>{{ ucfirst($category['description']) }}</td>
-                      <td class="text-center"><img src="{{ asset('image/' . $category['image']) }}" alt="{{ $category['image'] }}"
-                          class="img-thumbnail" width="50"></td>
+                      <td class="text-center"><img src="{{ asset('image/' . $category['image']) }}"
+                          alt="{{ $category['image'] }}" class="img-thumbnail" width="50"></td>
                       <td>
-                        <a href="{{ route('category.edit', $category['id']) }}" class="btn btn-warning"
-                          title="edit"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('category.edit', $category['id']) }}" class="btn btn-warning" title="edit"><i
+                            class="fas fa-edit"></i></a>
                         {{-- @if (isset(auth()->user()->getRole->permission['name']['2']['delete'])) --}}
-                          <a href="#" class="btn btn-danger" title="delete" data-toggle="modal"
-                            data-target="#ModalCenter{{ $category['id'] }}"><i class="fas fa-trash"></i></a>
-                          <!-- Modal -->
-                          <div class="modal fade" id="ModalCenter{{ $category['id'] }}" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header  bg-danger">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  Are you sure want to delete <b>{{ ucfirst($category['name']) }}</b> ?
-                                </div>
-                                <div class="modal-footer">
-                                  <form action="{{ route('category.destroy', $category['id']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                  </form>
-                                </div>
+                        <a href="#" class="btn btn-danger" title="delete" data-toggle="modal"
+                          data-target="#ModalCenter{{ $category['id'] }}"><i class="fas fa-trash"></i></a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalCenter{{ $category['id'] }}" tabindex="-1" role="dialog"
+                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header  bg-danger">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Are you sure want to delete <b>{{ ucfirst($category['name']) }}</b> ?
+                              </div>
+                              <div class="modal-footer">
+                                <form action="{{ route('category.destroy', $category['id']) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
                               </div>
                             </div>
                           </div>
+                        </div>
                         {{-- @endif --}}
                       </td>
                     </tr>
