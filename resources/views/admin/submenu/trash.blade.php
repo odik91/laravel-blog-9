@@ -25,7 +25,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Total record: {{ count($menus) }}</h3>
+              <h3 class="card-title">Total record: {{ count($submenus) }}</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -34,25 +34,29 @@
                   <tr>
                     <th>#</th>
                     <th>Menu</th>
+                    <th>Submenu</th>
+                    <th>route</th>
                     <th>Icon</th>
-                    <th>Route</th>
+                    <th>Is active</th>
                     <th>Edit / Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($menus as $key => $menu)
+                  @foreach ($submenus as $key => $submenu)
                     <tr>
                       <td>{{ ++$key }}</td>
-                      <td>{{ ucfirst($menu['menu']) }}</td>
-                      <td class="text-center"><i class="{{ $menu['icon'] }} fa-2x"></i></td>
-                      <td>{{ $menu['route'] }}</td>
+                      <td>{{ ucfirst($submenu->getMenu['menu']) }}</td>
+                      <td>{{ ucfirst($submenu['title']) }}</td>
+                      <td>{{ $submenu['route'] }}</td>
+                      <td class="text-center"><i class="{{ $submenu['icon'] }} fa-2x"></i></td>
+                      <td>{{ ucfirst($submenu['active']) }}</td>
                       <td>
-                        <a href="{{ route('menu.restore', $menu['id']) }}" class="btn btn-warning" title="Restore"><i
-                            class="fas fa-trash-restore"></i></a>
+                        <a href="{{ route('submenu.restore', $submenu['id']) }}" class="btn btn-warning"
+                          title="restore"><i class="fas fa-trash-restore"></i></a>
                         <a href="#" class="btn btn-danger" title="delete" data-toggle="modal"
-                          data-target="#ModalCenter{{ $menu['id'] }}"><i class="fas fa-trash"></i></a>
+                          data-target="#ModalCenter{{ $submenu['id'] }}"><i class="fas fa-dumpster-fire"></i></a>
                         <!-- Modal -->
-                        <div class="modal fade" id="ModalCenter{{ $menu['id'] }}" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="ModalCenter{{ $submenu['id'] }}" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -63,10 +67,10 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                Are you sure want to delete <b>{{ ucfirst($menu['menu']) }}</b> permanently ?
+                                Are you sure want to delete <b>{{ ucfirst($submenu['title']) }}</b> ?
                               </div>
                               <div class="modal-footer">
-                                <form action="{{ route('menu.delete', $menu['id']) }}" method="POST">
+                                <form action="{{ route('submenu.delete', $submenu['id']) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\Submenu;
 use Illuminate\Support\Facades\Session;
 
 class MenuController extends Controller
@@ -55,7 +56,7 @@ class MenuController extends Controller
         if ($insert) {
             Session::flash('success', "Menu $request->menu added successfully");
         } else {
-            Session::flash('error', "Menu $request->fail to add new menu");
+            Session::flash('error', "Menu $request->menu to add new menu");
         }
 
         return redirect()->route('menu.create');
@@ -110,7 +111,7 @@ class MenuController extends Controller
         if ($update) {
             Session::flash('success', "Menu $request->menu edited successfully");
         } else {
-            Session::flash('error', "Menu $request->fail to has fail to update");
+            Session::flash('error', "Menu $request->menu to has fail to update");
         }
         return redirect()->route('menu.index');
     }
@@ -127,6 +128,7 @@ class MenuController extends Controller
         $menuName = $menu['menu'];
         $delete = $menu->delete();
         if ($delete) {
+            Submenu::where('menu_id', $id)->update(['active' => 'inactive']);
             Session::flash('success', "Menu $menuName deleted successfully");
         } else {
             Session::flash('error', "Menu $menuName fail to delete");
@@ -137,7 +139,7 @@ class MenuController extends Controller
     public function trash()
     {
         $title = 'Trash Menu';
-        $menus = Menu::onlyTrashed()->orderBy('menu', 'asc')->get();
+        $menus = Menu::onlyTrashed()->orderBy('deleted_at', 'asc')->get();
         return view('admin.menu.trash', compact('menus', 'title'));
     }
 
@@ -153,11 +155,12 @@ class MenuController extends Controller
         return redirect()->route('menu.trash');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $menuName = Menu::onlyTrashed()->where('id', $id)->first()->menu;
         $delete = Menu::onlyTrashed()->where('id', $id)->forceDelete();
         if ($delete) {
-            Session::flash('success', "Menu $menuName deleted permanently successfully");
+            Session::flash('success', "Menu $menuName has deleted permanently");
         } else {
             Session::flash('error', "Menu $menuName fail to delete permanently");
         }

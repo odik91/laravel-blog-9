@@ -11,7 +11,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('menu.index') }}">Menu</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('submenu.index') }}">Submenu</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div>
@@ -25,7 +25,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Total record: {{ count($menus) }}</h3>
+              <h3 class="card-title">Total record: {{ count($submenus) }}</h3>
+              <a href="{{ route('submenu.create') }}" class="btn btn-info btn-sm float-right"><i
+                  class="fas fa-plus pr-1"></i>Add new submenu</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -34,25 +36,42 @@
                   <tr>
                     <th>#</th>
                     <th>Menu</th>
+                    <th>Submenu</th>
+                    <th>route</th>
                     <th>Icon</th>
-                    <th>Route</th>
+                    <th>Is active</th>
                     <th>Edit / Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($menus as $key => $menu)
+                  @foreach ($submenus as $key => $submenu)
                     <tr>
                       <td>{{ ++$key }}</td>
-                      <td>{{ ucfirst($menu['menu']) }}</td>
-                      <td class="text-center"><i class="{{ $menu['icon'] }} fa-2x"></i></td>
-                      <td>{{ $menu['route'] }}</td>
-                      <td>
-                        <a href="{{ route('menu.restore', $menu['id']) }}" class="btn btn-warning" title="Restore"><i
-                            class="fas fa-trash-restore"></i></a>
+                      @php
+                        $menu = App\Models\Menu::withTrashed()
+                            ->where('id', $submenu['menu_id'])
+                            ->first();
+                        $display = '';
+                        $checkMenu = App\Models\Menu::onlyTrashed()
+                            ->where('id', $submenu['menu_id'])
+                            ->first();
+                        if ($checkMenu) {
+                            $display = " <span class='badge badge-pill badge-danger'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i>
+                        Menu already in trash</span>";
+                        }
+                      @endphp
+                      <td>{{ ucfirst($menu['menu']) }} {!! $display !!}</td>
+                      <td>{{ ucfirst($submenu['title']) }}</td>
+                      <td>{{ $submenu['route'] }}</td>
+                      <td class="text-center"><i class="{{ $submenu['icon'] }} fa-2x"></i></td>
+                      <td>{{ ucfirst($submenu['active']) }}</td>
+                      <td class="text-center">
+                        <a href="{{ route('submenu.edit', $submenu['id']) }}" class="btn btn-warning" title="edit"><i
+                            class="fas fa-edit"></i></a>
                         <a href="#" class="btn btn-danger" title="delete" data-toggle="modal"
-                          data-target="#ModalCenter{{ $menu['id'] }}"><i class="fas fa-trash"></i></a>
+                          data-target="#ModalCenter{{ $submenu['id'] }}"><i class="fas fa-trash"></i></a>
                         <!-- Modal -->
-                        <div class="modal fade" id="ModalCenter{{ $menu['id'] }}" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="ModalCenter{{ $submenu['id'] }}" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -63,10 +82,10 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                Are you sure want to delete <b>{{ ucfirst($menu['menu']) }}</b> permanently ?
+                                Are you sure want to delete <b>{{ ucfirst($submenu['title']) }}</b> ?
                               </div>
                               <div class="modal-footer">
-                                <form action="{{ route('menu.delete', $menu['id']) }}" method="POST">
+                                <form action="{{ route('submenu.destroy', $submenu['id']) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
