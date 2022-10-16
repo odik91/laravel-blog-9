@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SubmenuController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,9 @@ Route::resource('category', CategoryController::class);
 Route::get('trash/category', [CategoryController::class, 'trash'])->name('category.trash');
 Route::get('trash/restore-category/{id}', [CategoryController::class, 'restore'])->name('category.restore');
 Route::delete('trash/delete-category/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
+// route admin subcategory management
+Route::resource('subcategory', SubcategoryController::class);
+Route::get('trash/subcategory', [SubcategoryController::class, 'trash'])->name('subcategory.trash');
+Route::get('trash/restore-subcategory/{id}', [SubcategoryController::class, 'restore'])->name('subcategory.restore');
+Route::delete('trash/delete-subcategory/{id}', [SubcategoryController::class, 'delete'])->name('subcategory.delete');

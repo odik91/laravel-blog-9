@@ -17,7 +17,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $title = 'Menu Lists';
+        $title = 'Menu List';
         $menus = Menu::orderBy('menu', 'asc')->get();
         return view('admin.menu.index', compact('title', 'menus'));
     }
