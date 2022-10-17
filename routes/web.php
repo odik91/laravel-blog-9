@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\SubmenuController;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,10 @@ Route::resource('subcategory', SubcategoryController::class);
 Route::get('trash/subcategory', [SubcategoryController::class, 'trash'])->name('subcategory.trash');
 Route::get('trash/restore-subcategory/{id}', [SubcategoryController::class, 'restore'])->name('subcategory.restore');
 Route::delete('trash/delete-subcategory/{id}', [SubcategoryController::class, 'delete'])->name('subcategory.delete');
+
+// route admin post management
+Route::resource('post', PostController::class);
+Route::get('trash/post', [PostController::class, 'trash'])->name('post.trash');
+Route::get('trash/restore-post/{id}', [PostController::class,'restore'])->name('post.restore');
+Route::delete('trash/delete-post/{id}', [PostController::class, 'delete'])->name('post.delete');
+Route::get('ajax/subcategory/{id}', [PostController::class, 'subcategory'])->name('ajax.subcategory');
