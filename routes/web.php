@@ -54,6 +54,6 @@ Route::delete('trash/delete-subcategory/{id}', [SubcategoryController::class, 'd
 // route admin post management
 Route::resource('post', PostController::class);
 Route::get('trash/post', [PostController::class, 'trash'])->name('post.trash');
-Route::get('trash/restore-post/{id}', [PostController::class,'restore'])->name('post.restore');
+Route::get('trash/restore-post/{id}', [PostController::class, 'restore'])->name('post.restore');
 Route::delete('trash/delete-post/{id}', [PostController::class, 'delete'])->name('post.delete');
 Route::get('ajax/subcategory/{id}', [PostController::class, 'subcategory'])->name('ajax.subcategory');

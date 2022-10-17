@@ -35,7 +35,8 @@
         </li>
         <li
           class="nav-item {{ (isset($title) && $title == 'Menu List') || $title == 'Add Menu' || $title == 'Edit Menu' || $title == 'Trash Menu' ? 'menu-is-opening menu-open' : '' }}">
-          <a href="#" class="{{ isset($title) && $title == 'Menu List' || $title == 'Add Menu' || $title == 'Edit Menu' || $title == 'Trash Menu' ? 'nav-link active' : 'nav-link' }}">
+          <a href="#"
+            class="{{ (isset($title) && $title == 'Menu List') || $title == 'Add Menu' || $title == 'Edit Menu' || $title == 'Trash Menu' ? 'nav-link active' : 'nav-link' }}">
             <i class="nav-icon fa fa-bars"></i>
             <p>
               Menu Management
@@ -61,7 +62,8 @@
         </li>
         <li
           class="nav-item {{ (isset($title) && $title == 'Submenu List') || $title == 'Add Submenu' || $title == 'Edit Submenu' || $title == 'Trash Submenu' ? 'menu-is-opening menu-open' : '' }}">
-          <a href="#" class="nav-link {{ isset($title) && $title == 'Submenu List' || $title == 'Add Submenu' || $title == 'Edit Submenu' || $title == 'Trash Submenu' ? 'active' : '' }}">
+          <a href="#"
+            class="nav-link {{ (isset($title) && $title == 'Submenu List') || $title == 'Add Submenu' || $title == 'Edit Submenu' || $title == 'Trash Submenu' ? 'active' : '' }}">
             <i class="nav-icon fa fa-list"></i>
             <p>
               Submenu Management
@@ -70,21 +72,25 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('submenu.index') }}" class="nav-link {{ (isset($title) && $title == 'Submenu List') || $title == 'Add Submenu' ? 'active' : '' }}">
+              <a href="{{ route('submenu.index') }}"
+                class="nav-link {{ (isset($title) && $title == 'Submenu List') || $title == 'Add Submenu' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Submenu Lists</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('submenu.trash') }}" class="nav-link {{ isset($title) && $title == 'Trash Submenu' ? 'active' : '' }}">
+              <a href="{{ route('submenu.trash') }}"
+                class="nav-link {{ isset($title) && $title == 'Trash Submenu' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Trash Submenu</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' || $title == 'Trash Category' ? 'menu-is-opening menu-open' : '' }}">
-          <a href="#" class="nav-link {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' ? 'active' : '' }}">
+        <li
+          class="nav-item {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' || $title == 'Trash Category' ? 'menu-is-opening menu-open' : '' }}">
+          <a href="#"
+            class="nav-link {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' ? 'active' : '' }}">
             <i class="nav-icon fa fa-braille"></i>
             <p>
               Category Management
@@ -93,21 +99,25 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('category.index') }}" class="nav-link {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' ? 'active' : '' }}">
+              <a href="{{ route('category.index') }}"
+                class="nav-link {{ (isset($title) && $title == 'Category List') || $title == 'Add Category' || $title == 'Edit Category' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Category List</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('category.trash') }}" class="nav-link {{ (isset($title) && $title == 'Trash Category') ? 'active' : '' }}">
+              <a href="{{ route('category.trash') }}"
+                class="nav-link {{ isset($title) && $title == 'Trash Category' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Trash Category</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' || $title == 'Trash Subcategory' ? 'menu-is-opening menu-open' : '' }}">
-          <a href="#" class="nav-link {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' ? 'active' : '' }}">
+        <li
+          class="nav-item {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' || $title == 'Trash Subcategory' ? 'menu-is-opening menu-open' : '' }}">
+          <a href="#"
+            class="nav-link {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' ? 'active' : '' }}">
             <i class="nav-icon fa fa-list-alt"></i>
             <p>
               Subcategory Management
@@ -116,13 +126,15 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('subcategory.index') }}" class="nav-link {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' ? 'active' : '' }}">
+              <a href="{{ route('subcategory.index') }}"
+                class="nav-link {{ (isset($title) && $title == 'Subcategory List') || $title == 'Add Subcategory' || $title == 'Edit Subcategory' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Subcategory List</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route ('subcategory.trash') }}" class="nav-link {{ (isset($title) && $title == 'Trash Subcategory') ? 'active' : '' }}">
+              <a href="{{ route('subcategory.trash') }}"
+                class="nav-link {{ isset($title) && $title == 'Trash Subcategory' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Trash Subcategory</p>
               </a>
